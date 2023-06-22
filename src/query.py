@@ -1,9 +1,13 @@
 import openai
 import os
+
+from dotenv import load_dotenv
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import Chroma
 from langchain.llms import OpenAI
 from langchain.chains import RetrievalQA
+
+load_dotenv()
 
 embd = OpenAIEmbeddings(client=openai.Embedding())
 db = Chroma(persist_directory="./chromadb", embedding_function=embd)
